@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ygomes-d <ygomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/31 12:54:35 by ygomes-d          #+#    #+#             */
-/*   Updated: 2021/09/04 15:21:27 by ygomes-d         ###   ########.fr       */
+/*   Created: 2021/08/27 11:29:05 by ygomes-d          #+#    #+#             */
+/*   Updated: 2021/09/12 19:12:41 by ygomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_strchr(const char *s, int c)
 {
-	char	*substr;
-	size_t	i;
-	size_t	j;
+	char			*str;
+	unsigned char	compare;
 
-	substr = malloc(sizeof ft_strlen(s) + 1);
-	if (!substr)
-		return (NULL);
-	i = 0;
-	j = 0;
-	while (i < start)
-		i++;
-	while (s[i + j] && j < len)
+	str = (char *)s;
+	compare = (unsigned char)c;
+	while (*str)
 	{
-		substr[j] = s[i + j];
-		j++;
+		if (*str == compare)
+			return (str);
+		str++;
 	}
-	substr[j] = '\0';
-	return (substr);
+	if (!compare && !*str)
+		return (str);
+	return (NULL);
 }

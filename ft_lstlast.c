@@ -1,36 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ygomes-d <ygomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/31 14:19:35 by ygomes-d          #+#    #+#             */
-/*   Updated: 2021/09/04 15:21:25 by ygomes-d         ###   ########.fr       */
+/*   Created: 2021/09/06 10:33:20 by ygomes-d          #+#    #+#             */
+/*   Updated: 2021/09/06 10:35:29 by ygomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtrim(char const *s1, char const *set)
+t_list	*ft_lstlast(t_list *lst)
 {
-	size_t	first;
-	size_t	last;
-	size_t	i;
-	char	*str;
-
-	first = 0;
-	last = ft_strlen(s1);
-	while (s1[first] && ft_strchr(set, s1[first]))
-		first++;
-	while (s1[last - 1] && ft_strchr(set, s1[last - 1]))
-		last--;
-	str = malloc(sizeof(last - first + 1));
-	if (!str)
+	if (!lst)
 		return (NULL);
-	i = 0;
-	while (first < last)
-		str[i++] = s1[first++];
-	str[i] = '\0';
-	return (str);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
 }

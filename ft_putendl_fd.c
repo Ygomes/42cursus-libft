@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ygomes-d <ygomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/02 08:55:07 by ygomes-d          #+#    #+#             */
-/*   Updated: 2021/09/04 15:21:17 by ygomes-d         ###   ########.fr       */
+/*   Created: 2021/09/02 10:42:13 by ygomes-d          #+#    #+#             */
+/*   Updated: 2021/09/04 17:46:40 by ygomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+void	ft_putendl_fd(char *s, int fd)
 {
-	char			*str;
-	unsigned int	i;
+	int	i;
 
-	str = malloc(sizeof(ft_strlen(s) + 1));
-	if (!str)
-		return (NULL);
 	i = 0;
 	while (s[i])
 	{
-		str[i] = f(i,s[i]);
+		write(fd, &s[i], 1);
 		i++;
 	}
-	str[i] = '\0';
-	return (str);
+	write(fd, &"\n", 1);
 }

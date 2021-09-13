@@ -6,7 +6,7 @@
 /*   By: ygomes-d <ygomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 16:22:39 by ygomes-d          #+#    #+#             */
-/*   Updated: 2021/09/04 15:20:39 by ygomes-d         ###   ########.fr       */
+/*   Updated: 2021/09/12 19:08:14 by ygomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ static unsigned int	ft_len(unsigned int n)
 
 	i = 0;
 	nbr = n;
-	if (nbr <= 0)
-		i = 1;
 	while (nbr)
 	{
 		i++;
@@ -36,13 +34,15 @@ char	*ft_itoa(int n)
 	char			*result;
 
 	num = n;
+	if (n < 0)
+		num *= -1;
 	len = ft_len(num);
-	result = malloc (sizeof(len));
+	if (n <= 0)
+		len++;
+	result = (char *)malloc(sizeof(char) * (len + 1));
 	if (!result)
 		return (NULL);
 	result[len] = '\0';
-	if (n < 0)
-		num = num * -1;
 	while (len--)
 	{
 		result[len] = num % 10 + 48;

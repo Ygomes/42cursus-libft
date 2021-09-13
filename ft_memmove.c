@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ygomes-d <ygomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/31 13:30:33 by ygomes-d          #+#    #+#             */
-/*   Updated: 2021/09/04 15:21:06 by ygomes-d         ###   ########.fr       */
+/*   Created: 2021/08/26 09:58:36 by ygomes-d          #+#    #+#             */
+/*   Updated: 2021/09/11 13:21:33 by ygomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	size_t	lens1;
-	size_t	lens2;
-	char	*str;
+	unsigned char	*psrc;
+	unsigned char	*pdest;
 
-	lens1 = ft_strlen(s1);
-	lens2 = ft_strlen(s2);
-	str = malloc (sizeof(lens1 + lens2 + 1));
-	if (!str)
+	psrc = (unsigned char *)src;
+	pdest = (unsigned char *)dest;
+	if (!psrc && !pdest)
 		return (NULL);
-	while (lens1--)
-		str[lens1] = s1[lens1];
-	lens1 = ft_strlen(s1);
-	while (lens2--)
-		str[lens1 + lens2] = s2[lens2];
-	lens2 = ft_strlen(s2);
-	str[lens1 + lens2] = '\0';
-	return (str);
+	if (psrc < pdest)
+		while (n--)
+			pdest[n] = psrc[n];
+	else
+		ft_memcpy(dest, src, n);
+	return (dest);
 }

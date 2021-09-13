@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ygomes-d <ygomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/02 10:42:13 by ygomes-d          #+#    #+#             */
-/*   Updated: 2021/09/04 15:20:51 by ygomes-d         ###   ########.fr       */
+/*   Created: 2021/08/23 13:58:57 by ygomes-d          #+#    #+#             */
+/*   Updated: 2021/09/12 17:29:29 by ygomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd)
+size_t	ft_strlen(const char *s)
 {
-	write(fd, &*s, ft_strlen(s));
+	int	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }
