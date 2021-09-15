@@ -6,13 +6,13 @@
 /*   By: ygomes-d <ygomes-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 10:01:05 by ygomes-d          #+#    #+#             */
-/*   Updated: 2021/09/12 19:58:50 by ygomes-d         ###   ########.fr       */
+/*   Updated: 2021/09/13 10:16:23 by ygomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	size_t	substr_count(const char *s, char c)
+static	size_t	substr_count(char const *s, char c)
 {
 	size_t	i;
 	size_t	j;
